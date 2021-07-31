@@ -10,11 +10,53 @@ CREATE TABLE IF NOT EXISTS sales (
     customer_name text NOT NULL,
     customer_phone text NOT NULL,
     salesperson text NOT NULL,
-    serial_number text REFERENCES cars,
+    manufacturer text,
+    model_name text,
+    serial_number text,
     primary key (
         customer_name,
         customer_phone,
         salesperson,
-        serial_number
-    )
+        serial_number,
+        manufacturer,
+        model_name
+    ),
+    foreign key (manufacturer, model_name, serial_number) references cars(manufacturer, model_name, serial_number) on delete cascade
 );
+insert into cars (
+        manufacturer,
+        model_name,
+        serial_number,
+        car_weight,
+        price
+    )
+values ('honda', 'civic', '12345a', 6, 130000),
+    ('honda', 'civic', '12345b', 600, 130000),
+    ('honda', 'civic', '12345c', 600, 130000),
+    ('mitsubishi', 'lancer', '12345a', 600, 130000),
+    ('mitsubishi', 'lancer', '12345b', 600, 130000),
+    ('mitsubishi', 'lancer', '12345c', 600, 130000);
+insert into sales (
+        customer_name,
+        customer_phone,
+        salesperson,
+        serial_number,
+        manufacturer,
+        model_name
+    )
+values (
+        'John',
+        '999',
+        'Mary',
+        '12345a',
+        'honda',
+        'civic'
+    ),
+    (
+        'Jacob',
+        '995',
+        'Mary',
+        '12345a',
+        'mitsubishi',
+        'lancer'
+    );

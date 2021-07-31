@@ -6,9 +6,13 @@ I utilised the python package APScheduler with the BlockingScheduler.
 
 This python file will need to be kept running inside of the server that contains the dataset files.  
 The file is a blocking file and will continue to run regardless of environment (e.g. linux, windows, OSX) as long as python and required packages are installed.  
-I chose this over cron as I was unsure of the environment this would be run in.  
-  
-Steps to install dependecies are below.  
+I chose this over cron as I was unsure of the environment this would be run in.
+
+Steps to install dependecies are below.
+
+## Assumptions
+
+If the price is less than 100, the `above_100` field will be empty
 
 ## Dependencies
 

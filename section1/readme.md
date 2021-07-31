@@ -22,9 +22,10 @@ Install using pip: `pip install -r requirements.txt`
 
 ## Output file
 
-The output file name would be the same as the input file name with "\_processed" appended to the end
+Datasets are found in `/section1/datasets`  
+The output file name would be the same as the input file name with "\_processed" appended to the end  
 E.g. dataset1.csv --> dataset1_processed.csv
 
 ## APScheduler
 
-Using APScheduler to perform the cron job. More info can be found here https://apscheduler.readthedocs.io/en/stable/index.html
+Using APScheduler to perform the cron job. More info can be found here  https://apscheduler.readthedocs.io/en/stable/index.html

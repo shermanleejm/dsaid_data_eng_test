@@ -35,7 +35,7 @@ def cleanLine(string: str) -> Tuple[bool, str]:
 
 
 def job():
-    workingDirectory = os.path.dirname(os.path.realpath(__file__))
+    workingDirectory = os.path.dirname(os.path.realpath(__file__)) + "/datasets"
 
     for i in range(1, 3):
         outFile = open(f"{workingDirectory}/dataset{str(i)}_processed.csv", "w+")

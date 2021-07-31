@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS sales (
     manufacturer text,
     model_name text,
     serial_number text,
+    ts TIMESTAMP,
     primary key (
         customer_name,
         customer_phone,
@@ -50,7 +51,8 @@ values (
         'Mary',
         '12345a',
         'honda',
-        'civic'
+        'civic',
+        '2021-07-31 12:56:00-00'
     ),
     (
         'Jacob',
@@ -58,5 +60,24 @@ values (
         'Mary',
         '12345a',
         'mitsubishi',
-        'lancer'
+        'lancer',
+        '2021-07-30 12:56:00-00'
+    ),
+    (
+        'Jacob',
+        '995',
+        'Mary',
+        '12345b',
+        'mitsubishi',
+        'lancer',
+        '2021-08-03 12:56:00-00'
+    ),
+(
+        'Jacob',
+        '995',
+        'Mary',
+        '12345c',
+        'mitsubishi',
+        'lancer',
+        '2021-08-04 12:56:00-00'
     );

@@ -6,7 +6,7 @@ from typing import Tuple
 
 def cleanLine(string: str) -> Tuple[bool, str]:
     if string.split(",")[0] == "name":
-        return True, "first_name,last_name,price,above_100"
+        return True, "first_name,last_name,price,above_100\n"
     if string.split(",")[0] == "":
         return False, ""
 

@@ -10,7 +10,7 @@ import {
   Legend,
   Brush,
 } from 'recharts';
-import { Grid, Typography } from '@material-ui/core';
+import { CircularProgress, Grid, Typography } from '@material-ui/core';
 
 const rootpath = 'https://api.covid19api.com/total/dayone/country/singapore';
 
@@ -45,11 +45,10 @@ export const BasicGraph: React.FC<BasicGraphProps> = () => {
         const res: Array<DataInterface> = [];
         for (let i = 0; i < raw.length; i++) {
           let newDate = new Date(raw[i].Date);
-          let newDateString: string = `${newDate.toLocaleString('default', {
-            day: '2-digit',
-          })} ${newDate.toLocaleString('default', {
-            month: 'short',
-          })} ${newDate.toLocaleString('default', { year: 'numeric' })}`;
+          let newDateDay = newDate.toLocaleString('default', { day: '2-digit' });
+          let newDateMonth = newDate.toLocaleString('default', { month: 'short' });
+          let newDateYear = newDate.toLocaleString('default', { year: 'numeric' });
+          let newDateString: string = `${newDateDay} ${newDateMonth} ${newDateYear}`;
           let tmp: DataInterface = {
             date: newDateString,
             active: i > 0 ? raw[i].Active - raw[i - 1].Active : raw[i].Active,
@@ -66,8 +65,8 @@ export const BasicGraph: React.FC<BasicGraphProps> = () => {
   }, []);
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
-      {data !== undefined && (
+    <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '20px' }}>
+      {data !== undefined ? (
         <Grid container direction="column" justify="center" alignItems="center">
           <Grid item>
             <Typography variant="h2">Covid Overview for Singapore</Typography>
@@ -102,6 +101,17 @@ export const BasicGraph: React.FC<BasicGraphProps> = () => {
             </BarChart>
           </Grid>
         </Grid>
+      ) : (
+        <div>
+          <Grid container direction="column" justify="center" alignItems="center">
+            <Grid item>
+              <Typography>Retrieving data...</Typography>
+            </Grid>
+            <Grid item>
+              <CircularProgress />
+            </Grid>
+          </Grid>
+        </div>
       )}
     </div>
   );

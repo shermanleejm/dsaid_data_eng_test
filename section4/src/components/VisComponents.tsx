@@ -10,6 +10,7 @@ import {
   Legend,
   Brush,
 } from 'recharts';
+import { Grid, Typography } from '@material-ui/core';
 
 const rootpath = 'https://api.covid19api.com/total/dayone/country/singapore';
 
@@ -65,35 +66,42 @@ export const BasicGraph: React.FC<BasicGraphProps> = () => {
   }, []);
 
   return (
-    <div style={{ display: 'inline', float: 'none' }}>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
       {data !== undefined && (
-        <BarChart
-          width={1000}
-          height={300}
-          data={data}
-          margin={{
-            top: 20,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="date" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Brush
-            dataKey="date"
-            height={30}
-            stroke="#8884d8"
-            startIndex={data.length - 20}
-            endIndex={data.length - 1}
-          />
-          <Bar dataKey="active" stackId="a" fill="#ff4a4a" />
-          <Bar dataKey="confirmed" stackId="a" fill="#8884d8" />
-          <Bar dataKey="recovered" stackId="a" fill="#82ca9d" />
-        </BarChart>
+        <Grid container direction="column" justify="center" alignItems="center">
+          <Grid item>
+            <Typography variant="h2">Covid Overview for Singapore</Typography>
+          </Grid>
+          <Grid item>
+            <BarChart
+              width={1000}
+              height={300}
+              data={data}
+              margin={{
+                top: 20,
+                right: 100,
+                left: 100,
+                bottom: 5,
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="date" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Brush
+                dataKey="date"
+                height={30}
+                stroke="#8884d8"
+                startIndex={data.length - 20}
+                endIndex={data.length - 1}
+              />
+              <Bar dataKey="active" stackId="a" fill="#ff4a4a" />
+              <Bar dataKey="confirmed" stackId="a" fill="#8884d8" />
+              <Bar dataKey="recovered" stackId="a" fill="#82ca9d" />
+            </BarChart>
+          </Grid>
+        </Grid>
       )}
     </div>
   );

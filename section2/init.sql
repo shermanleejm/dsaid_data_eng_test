@@ -10,10 +10,10 @@ CREATE TABLE IF NOT EXISTS sales (
     customer_name text NOT NULL,
     customer_phone text NOT NULL,
     salesperson text NOT NULL,
-    manufacturer text,
-    model_name text,
-    serial_number text,
-    ts TIMESTAMP,
+    manufacturer text NOT NULL,
+    model_name text NOT NULL,
+    serial_number text NOT NULL,
+    ts TIMESTAMP NOT NULL,
     primary key (
         customer_name,
         customer_phone,
@@ -31,9 +31,11 @@ insert into cars (
         car_weight,
         price
     )
-values ('honda', 'civic', '12345a', 6, 130000),
+values ('honda', 'civic', '12345a', 600, 130000),
     ('honda', 'civic', '12345b', 600, 130000),
     ('honda', 'civic', '12345c', 600, 130000),
+    ('mini', 'cooper', 'aaaaaa', 100, 5),
+    ('kia', 'car name', 'aaaaaa', 120, 6),
     ('mitsubishi', 'lancer', '12345a', 600, 130000),
     ('mitsubishi', 'lancer', '12345b', 600, 130000),
     ('mitsubishi', 'lancer', '12345c', 600, 130000);
@@ -43,7 +45,8 @@ insert into sales (
         salesperson,
         serial_number,
         manufacturer,
-        model_name
+        model_name,
+        ts
     )
 values (
         'John',
@@ -72,7 +75,7 @@ values (
         'lancer',
         '2021-08-03 12:56:00-00'
     ),
-(
+    (
         'Jacob',
         '995',
         'Mary',
@@ -80,4 +83,13 @@ values (
         'mitsubishi',
         'lancer',
         '2021-08-04 12:56:00-00'
+    ),
+    (
+        'alex',
+        '919',
+        'Margaret',
+        'aaaaaa',
+        'mini',
+        'cooper',
+        '2021-07-10 12:56:00-00'
     );

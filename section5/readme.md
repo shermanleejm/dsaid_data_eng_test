@@ -4,7 +4,8 @@
 
 This problem appears to be a classification problem.  
 The input data given excludes the number of seats which I removed from the dataset.
-
+Looking at the correlations between all the variables and `buying` it appears almost negligible.  
+The only variable that can describe `buying` appears to be `class`.  
 ## Methods used
 
 1. XGBoost  
